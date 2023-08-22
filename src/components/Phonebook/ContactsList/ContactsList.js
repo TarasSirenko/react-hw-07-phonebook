@@ -16,7 +16,6 @@ export default function ContactList() {
   const visibleContacts = getVisibleContacts(contactsList, filter);
   return (
     <div className={s.Container}>
-      <h2 className={s.Title}>Contacts:</h2>
       <ul className={s.ContactList}>
         {visibleContacts &&
           visibleContacts.map(({ name, id, phone }) => {

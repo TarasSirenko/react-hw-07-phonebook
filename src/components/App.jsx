@@ -1,24 +1,37 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import AddContactscForm from './Phonebook/AddContactsForm/AddContactsForm';
 import ContactList from './Phonebook/ContactsList/ContactsList';
 import SearchEngine from './Phonebook/SearchEngine/SearchEngine';
+import Container from './Container/Container';
+import AppBar from './AppBar/AppBar';
+import RegisterForm from './RegisterForm/RegisterForm';
+import LoginForm from './LoginForm/LoginForm';
 
 // import {base} from "../../src/base"
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>Phonebook</h1>
-      <AddContactscForm />
-      <SearchEngine />
-      <ContactList />
-    </div>
+    <Container>
+      <AppBar />
+      <Routes>
+        <Route path="/" exact element={<AddContactscForm />} />
+
+        <Route
+          path="/contacts"
+          exact
+          element={
+            <>
+              <SearchEngine />
+              <ContactList />{' '}
+            </>
+          }
+        />
+
+        <Route path="/registre" exact element={<RegisterForm />} />
+
+        <Route path="/login" exact element={<LoginForm />} />
+      </Routes>
+    </Container>
   );
 }
-
-// JSON.stringify(base)
-
-// console.log(JSON.stringify(base));
-fetch('https://645be80699b618d5f329314f.mockapi.io/contacts')
-  .then(r => r.json())
-  .then(console.log);
